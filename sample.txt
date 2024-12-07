@@ -1,0 +1,58 @@
+HTML CODING
+
+<html>
+<head>
+    <title>Library Management System</title>
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <form id="libraryForm">
+        <label>Book Name:</label>
+        <input type="text" id="bookName"><br><br>
+        <label>Author:</label>
+        <input type="text" id="author"><br><br>
+        <button type="button" onclick="addBook()">Add Book</button>
+    </form>
+    <h2>Book List</h2>
+    <ul id="bookList"></ul>
+</body>
+</html>
+
+
+JAVASCRIPT CODING
+
+let books = [];
+
+function addBook() {
+    const bookName = document.getElementById('bookName').value;
+    const author = document.getElementById('author').value;
+
+    if (bookName && author) {
+        books.push({ bookName, author });
+        displayBooks();
+        alert("Book added successfully!");
+    } else {
+        alert("Please enter all details.");
+    }
+}
+
+function displayBooks() {
+    const bookList = document.getElementById('bookList');
+    bookList.innerHTML = "";
+    books.forEach((book, index) => {
+        bookList.innerHTML += `<li>${index + 1}. ${book.bookName} by ${book.author}</li>`;
+    });
+}
+
+
+SQL QUERIES
+
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    book_name VARCHAR(255),
+    author VARCHAR(255)
+);
+
+INSERT INTO books (book_name, author) VALUES ('Book Name', 'Author Name');
+
+SELECT * FROM books;
