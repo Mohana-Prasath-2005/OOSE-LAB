@@ -56,3 +56,27 @@ CREATE TABLE books (
 INSERT INTO books (book_name, author) VALUES ('Book Name', 'Author Name');
 
 SELECT * FROM books;
+
+
+DB CONNECTION
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DatabaseConnection {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/yourDatabase";
+        String username = "yourUsername";
+        String password = "yourPassword"; 
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Connected to the database successfully!");
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Database connection failed!");
+            e.printStackTrace();
+        }
+    }
+}
